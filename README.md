@@ -101,6 +101,8 @@ Deployment [is configured](uwsgi.ini) using
 
 In this case, environment variables are set in the `uwsgi.ini` file.
 
+Also, [we use](scihublondon.org) nginx to proxy all requests to uWSGI.
+
 ## License
 
 This software is licensed under the MIT license. For more information, read the
