@@ -1,0 +1,9 @@
+<div class="subscription">
+    <h2>Get notified for our first meetup</h2>
+    <form method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        {% csrf_token %}
+        <input type="submit" value="submit">
+    </form>
+</div>
