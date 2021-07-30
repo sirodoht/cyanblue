@@ -3,6 +3,15 @@
 set -e
 set -x
 
+# push origin
+git push origin master
+
+# make sure tests pass
+source venv/bin/activate
+python manage.py test
+deactivate
+
+# pull and reload on server
 ssh root@95.217.223.96 'cd /opt/apps/cyanblue \
     && git pull \
     && source venv/bin/activate \
