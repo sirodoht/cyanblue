@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-75rdf=qrvt)hbt2dg)f+0h%hu09+a-t4lnh_3h69w_^c@t2h1("
+SECRET_KEY = os.environ.get("SECRET_KEY", "nonrandom_secret")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get("NODEBUG") is None else False
 
 ALLOWED_HOSTS = ["*"]
+
+ADMINS = [("Eve", "hiya@scihublondon.org")]
 
 
 # Application definition
@@ -126,3 +128,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Email
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.postmarkapp.com"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 587
+
+DEFAULT_FROM_EMAIL = "Sci-Hub London <hiya@scihublondon.org>"
+EMAIL_FROM_HOST = "scihublondon.org"
+SERVER_EMAIL = "WALL·E <server@scihublondon.org>"
+EMAIL_SUBJECT_PREFIX = "[cyanblue] "
