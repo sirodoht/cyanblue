@@ -260,6 +260,12 @@ input[type="submit"]:hover {
     box-shadow: 8px 8px #000;
 }
 
+aside {
+    border: 3px dashed var(--primary-color);
+    text-align: center;
+    padding: 64px 0;
+}
+
 hr {
     border: 0;
     height: 0;
