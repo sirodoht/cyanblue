@@ -13,6 +13,14 @@
 
     </head>
     <body>
+        {% if messages %}
+        <aside>
+            {% for message in messages %}
+            <div {% if message.tags %}class="alert-{{ message.tags }}"{% endif %}>{{ message|safe }}</div>
+            {% endfor %}
+        </aside>
+        {% endif %}
+
         <h1 class="landing-title">Sci-Hub Meetup London</h1>
 
         <main>
