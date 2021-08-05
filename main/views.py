@@ -18,8 +18,36 @@ def index(request):
                 fields = ["email"]
 
         form = SubscriptionForm(request.POST)
-        form.save()
 
+        # if not valid
+        if not form.is_valid():
+
+            if "email" in form.errors and form.errors["email"] == [
+                "Subscription with this Email already exists."
+            ]:
+                # if case of already subscribed
+                messages.info(request, "Email already subscribed :)")
+                return render(
+                    request,
+                    "main/index.html",
+                )
+
+            else:
+                # all other cases
+                messages.error(
+                    request,
+                    "Well, that didn't work :/",
+                )
+                return render(
+                    request,
+                    "main/index.html",
+                    {
+                        "form": form,
+                    },
+                )
+
+        # this branch only executes if form is valid
+        form.save()
         submitter_email = form.cleaned_data["email"]
         mail_admins(
             f"New subscription: {submitter_email}",
