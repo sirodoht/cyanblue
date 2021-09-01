@@ -1,121 +1,91 @@
+{% extends 'main/layout.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block content %}
 
-        <link rel="stylesheet" href="{% static 'style.css' %}">
+<h1 class="landing-title">Sci-Hub Meetup London</h1>
 
-        <title>Sci-Hub Meetup London</title>
+<main>
+    <article class="landing-pin">
+        <a href="meetup-1">Meetup #1 — Sep 23, 2021</a>
+        <br>@ <a href="https://www.nwspk.com/">Newspeak House</a>
+    </article>
 
-        <meta name="twitter:card" content="summary">
-        <meta property="og:url" content="https://scihublondon.org/">
-        <meta property="og:title" content="Sci-Hub Meetup London">
-        <meta property="og:description" content="Are you interested in Sci-Hub? We’re interested in Sci-Hub!">
+    <article class="landing-intro">
+        <p>Hey!—</p>
+        <p>
+            Are you interested in Sci-Hub? We’re interested in
+            <span style="white-space: nowrap;">Sci-Hub</span>!
+        </p>
+        <p>
+            We’re a group of people (not affiliated with Sci-Hub) that
+            wants to talk about and exchange ideas and stories about the
+            unique library.
+        </p>
 
-    </head>
-    <body>
-        {% if messages %}
-        <aside>
-            {% for message in messages %}
-            <div {% if message.tags %}class="alert-{{ message.tags }}"{% endif %}>
-                {{ message|safe }}
-            </div>
-            {% endfor %}
+        <p>
+            Join us in our first meetup on September 23, 2021
+            at <a href="https://www.nwspk.com/">Newspeak House</a>!
+        </p>
+        <p>
+            PS. We do not support, endorse, or contribute in any
+            way to illegal activities. Our interest to Sci-Hub is only
+            from a societal and research point of view.
+        </p>
+    </article>
 
-            {{ form.non_field_errors }}
-            {% if form.email.errors %}
-                {% for error in form.email.errors %}
-                    <span class="form-error">{{ error|escape }}</span><br>
-                {% endfor %}
-            {% endif %}
-        </aside>
-        {% endif %}
+    {% include "partials/subscribe.html" %}
 
+    <hr>
 
-        <h1 class="landing-title">Sci-Hub Meetup London</h1>
+    <article>
+        <h2>Sci-Hub can be approached through many lenses</h2>
+        <p>
+            <span class="landing-wordgram">Practical.</span>
+            Making it easier to download articles, even when one has
+            access through the official channels.
+        </p>
+        <p>
+            <span class="landing-wordgram">Essential.</span>
+            Without Sci-Hub lots of people (and especially those from
+            poor countries/universities) would not be able to access a
+            wide array papers.
+        </p>
+        <p>
+            <span class="landing-wordgram">Ethical.</span>
+            Neither does one want to be treated unfairly nor wrong
+            someone else. Is it fair for Sci-Hub to exist?
+        </p>
+        <p>
+            <span class="landing-wordgram">Political.</span>
+            In addition to everything else, it was our societies’ laws
+            that motivated Sci-Hub to come to existence.
+        </p>
+        <p>
+            <span class="landing-wordgram">Technical.</span>
+            How on earth does all this bandwidth demand from
+            all over the world get covered?
+        </p>
+        <p>
+            <span class="landing-wordgram">Legal.</span>
+            What do copyright laws say and how are they defined?
+        </p>
+        <p>
+            <span class="landing-wordgram">Research.</span>
+            Does more people having access to research papers lead
+            to science speeding up?
+        </p>
+        <p>...and many more we haven’t thought yet.</p>
 
-        <main>
-            <article class="landing-intro">
-                <p>Hey!—</p>
-                <p>
-                    Are you interested in Sci-Hub? We’re interested in
-                    <span style="white-space: nowrap;">Sci-Hub</span>!
-                </p>
-                <p>
-                    We’re a group of people (not affiliated with Sci-Hub) that
-                    wants to talk about and exchange ideas and stories about the
-                    unique library.
-                </p>
-                <p>
-                    We’re new and we’ll have our first meetup around Fall 2021
-                    at <a href="https://www.nwspk.com/">Newspeak House</a>.
-                </p>
-                <p>
-                    Join us!
-                </p>
-                <p>
-                    PS. We do not support, endorse, or contribute in any
-                    way to illegal activities. Our interest to Sci-Hub is only
-                    from a societal and research point of view.
-                </p>
-            </article>
+        <p>
+            If you have any thoughts or comments on the
+            above, join us—we’d love to hear them.
+        </p>
+    </article>
 
-            {% include "partials/subscribe.html" %}
+    {% include "partials/subscribe.html" %}
 
-            <hr>
+</main>
 
-            <article>
-                <h2>Sci-Hub can be approached through many lenses</h2>
-                <p>
-                    <span class="landing-wordgram">Practical.</span>
-                    Making it easier to download articles, even when one has
-                    access through the official channels.
-                </p>
-                <p>
-                    <span class="landing-wordgram">Essential.</span>
-                    Without Sci-Hub lots of people (and especially those from
-                    poor countries/universities) would not be able to access a
-                    wide array papers.
-                </p>
-                <p>
-                    <span class="landing-wordgram">Ethical.</span>
-                    Neither does one want to be treated unfairly nor wrong
-                    someone else. Is it fair for Sci-Hub to exist?
-                </p>
-                <p>
-                    <span class="landing-wordgram">Political.</span>
-                    In addition to everything else, it was our societies’ laws
-                    that motivated Sci-Hub to come to existence.
-                </p>
-                <p>
-                    <span class="landing-wordgram">Technical.</span>
-                    How on earth does all this bandwidth demand from
-                    all over the world get covered?
-                </p>
-                <p>
-                    <span class="landing-wordgram">Legal.</span>
-                    What do copyright laws say and how are they defined?
-                </p>
-                <p>
-                    <span class="landing-wordgram">Research.</span>
-                    Does more people having access to research papers lead
-                    to science speeding up?
-                </p>
-                <p>...and many more we haven’t thought yet.</p>
-
-                <p>
-                    If you have any thoughts or comments on the
-                    above, join us—we’d love to hear them.
-                </p>
-            </article>
-
-            {% include "partials/subscribe.html" %}
-
-        </main>
-
-    </body>
-</html>
+{% endblock %}
