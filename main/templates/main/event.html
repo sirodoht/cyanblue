@@ -2,6 +2,13 @@
 
 {% load static %}
 
+{% block meta %}
+    <meta name="twitter:card" content="summary">
+    <meta property="og:url" content="https://scihublondon.org/{{ event.slug }}">
+    <meta property="og:title" content="{{ event.title }} — Sci-Hub Meetup London">
+    <meta property="og:description" content="Join us on Sep 23, 2021 at Newspeak House for our first meetup!">
+{% endblock %}
+
 {% block content %}
 
 <h1 class="landing-title">
