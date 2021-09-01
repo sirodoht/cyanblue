@@ -17,4 +17,5 @@ ssh root@95.217.223.96 'cd /opt/apps/cyanblue \
     && source venv/bin/activate \
     && pip install -r requirements.txt \
     && python manage.py collectstatic --noinput \
-    && python manage.py migrate'
+    && python manage.py migrate \
+    && touch /etc/uwsgi/vassals/cyanblue.ini'
