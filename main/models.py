@@ -7,3 +7,13 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Event(models.Model):
+    slug = models.CharField(max_length=50)
+    title = models.CharField(max_length=300)
+    location = models.CharField(max_length=300)
+    scheduled_at = models.DateTimeField()
+
+    def __str__(self):
+        return self.slug

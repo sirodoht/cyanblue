@@ -14,3 +14,18 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Subscription, SubscriptionAdmin)
+
+
+class EventAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "title",
+        "slug",
+        "scheduled_at",
+        "location",
+    )
+
+    ordering = ["-id"]
+
+
+admin.site.register(models.Event, EventAdmin)
