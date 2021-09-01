@@ -56,3 +56,13 @@ def index(request):
 
         messages.success(request, "Thanks! Email saved—we’ll be in touch soon!")
         return render(request, "main/index.html")
+
+
+def event(request, event_slug):
+    return render(
+        request,
+        "main/event.html",
+        {
+            "event": models.Event.objects.get(slug=event_slug),
+        },
+    )

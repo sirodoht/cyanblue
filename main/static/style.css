@@ -306,6 +306,19 @@ hr {
     }
 }
 
+.landing-title-muted {
+    color: var(--muted-color);
+}
+
+.landing-pin {
+    text-align: center;
+    margin-bottom: 128px;
+    font-size: 32px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 12px 0;
+}
+
 .landing-intro {
     font-size: 22px;
 }

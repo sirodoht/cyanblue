@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1 class="landing-title">
+    <span class="landing-title-muted">Sci-Hub Meetup London</span>
+    <br>{{ event.title }} — {{ event.scheduled_at|date }} at {{ event.scheduled_at|time }}
+    <br>@ <a href="https://www.nwspk.com/">{{ event.location }}</a>
+</h1>
+
+<main>
+    <article class="landing-intro">
+        <p>
+            Join us in our inaugural meetup at Newspeak House. Let’s meetup and
+            talk about the phenomenon of
+            <span style="white-space: nowrap;">Sci-Hub</span>!
+        </p>
+        <p>
+            Newspeak House is at
+            <a href="https://goo.gl/maps/7PGNugeR6dPika6W8">133-135 Bethnal Green Road, E2 7DG</a>.
+    </article>
+
+    {% include "partials/subscribe.html" %}
+
+    <article>
+        <h2>About us</h2>
+        <p>
+            We’re a group of people (not affiliated with Sci-Hub) that wants to
+            talk about and exchange ideas and stories about the unique library.
+        </p>
+        <p>
+            <br>
+            <a href="{% url 'index' %}">← Back to home</a>
+        </p>
+    </article>
+
+</main>
+
+{% endblock %}}
