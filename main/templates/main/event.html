@@ -12,8 +12,15 @@
 {% block content %}
 
 <h1 class="landing-title">
-    <span class="landing-title-muted">Sci-Hub Meetup London</span>
-    <br>{{ event.title }} — {{ event.scheduled_at|date }} at {{ event.scheduled_at|time }}
+    <a href="{% url 'index' %}" class="landing-title-muted">
+        Sci-Hub Meetup London
+    </a>
+    <br>{{ event.title }} —
+    <a href="{% url 'event_ics' event.slug %} " class="event-ics">
+        <time datetime="2021-09-23T18:00:00+0100">
+            {{ event.scheduled_at|date }} at {{ event.scheduled_at|time }}
+        </time>
+    </a>
     <br>@ <a href="https://www.nwspk.com/">{{ event.location }}</a>
 </h1>
 
@@ -37,22 +44,27 @@
         </p>
 
         <p>
-            Context for the current affairs: Sci-Hub has been under attack since its inception, but since
-            February 2021, it has stopped getting updated. No new articles are added.
-            This is due an ongoing legal hearing in India, which keeps—constantly—being
+            Context for the current affairs: Sci-Hub has been under attack since
+            its inception, but since February 2021, it has stopped getting updated.
+            No new articles are added. This is due an ongoing legal hearing in
+            India, which keeps—constantly—being
             <a href="https://old.reddit.com/r/scihub/comments/lofj0r/announcement_scihub_has_been_paused_no_new/">postponed</a>.
         </p>
 
         <p>
-            It will be interesting to see what impact this will have in the research community,
-            as people already cannot find new papers. Will research slow down?
+            It will be interesting to see what impact this will have in the
+            research community, as people already cannot find new papers. Will
+            research slow down?
         </p>
         <p>
-            This is some of the content our discussions can have in this first meetup. There is no RSVP,
-            just show up!
+            This is some of the content our discussions can have in this first
+            meetup. There is no RSVP, just show up!
         </p>
         <p>
             Thursday, Sep 23, 2021 at 6pm.
+        </p>
+        <p>
+            <a href="{% url 'event_ics' event.slug %}">Calendar event link</a>.
         </p>
 
         <p>
@@ -62,6 +74,9 @@
         <p>
             Contact: <a href="https://twitter.com/sirodoht">@sirodoht</a> or
             <a href="mailto:zf+scihub@sirodoht.com">zf+scihub@sirodoht.com</a>.
+        </p>
+        <p>
+            Here is our <a href="{% url 'coc' %}">Code of Conduct</a>.
         </p>
 
         <p>
