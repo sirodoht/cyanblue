@@ -16,6 +16,21 @@ class SubscriptionAdmin(admin.ModelAdmin):
 admin.site.register(models.Subscription, SubscriptionAdmin)
 
 
+class EmailRecordAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "subscription",
+        "email",
+        "subject",
+        "sent_at",
+    )
+
+    ordering = ["-id"]
+
+
+admin.site.register(models.EmailRecord, EmailRecordAdmin)
+
+
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         "id",
