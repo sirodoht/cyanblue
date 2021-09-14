@@ -8,6 +8,7 @@ class SubscriptionAdmin(admin.ModelAdmin):
         "id",
         "email",
         "created_at",
+        "unsubscribe_key",
     )
 
     ordering = ["-id"]
