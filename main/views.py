@@ -104,7 +104,7 @@ class DashboardAnnounce(LoginRequiredMixin, FormView):
 
             # but if dry run, then only sent to admin id=1
             if form.cleaned_data.get("dryrun"):
-                subscribers = [models.Subscription.objects.get(id=1)]
+                subscribers = [models.Subscription.objects.get(id=32)]
 
             for s in subscribers:
                 unsubscribe_url = utils.get_protocol() + s.get_unsubscribe_url()
