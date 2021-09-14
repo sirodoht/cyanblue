@@ -101,7 +101,7 @@ Deployment [is configured](uwsgi.ini) using
 
 In this case, environment variables are set in the `uwsgi.ini` file.
 
-Also, [we use](scihublondon.org) nginx to proxy all requests to uWSGI.
+Also, nginx [is configured to proxy](scihublondon.org.conf) all requests to uWSGI.
 
 ## License
 
