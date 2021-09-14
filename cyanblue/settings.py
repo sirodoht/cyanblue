@@ -35,8 +35,8 @@ ALLOWED_HOSTS = [
 ADMINS = [("Eve", "hiya@scihublondon.org")]
 
 CANONICAL_HOST = "scihublondon.org"
-if DEBUG:
-    CANONICAL_HOST = "localhost:8000"
+#if DEBUG:
+#    CANONICAL_HOST = "localhost:8000"
 
 
 # Application definition
