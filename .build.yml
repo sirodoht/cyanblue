@@ -1,0 +1,16 @@
+image: ubuntu/20.04
+packages:
+  - python3
+  - python3-pip
+tasks:
+  - build: |
+      cd cyanblue
+      pip3 install -r requirements.txt
+  - test: |
+      cd cyanblue
+      python3 manage.py test
+  - lint: |
+      cd cyanblue
+      pip3 install -r requirements.txt
+      export PATH=/home/build/.local/bin:$PATH
+      make lint
