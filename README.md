@@ -96,7 +96,7 @@ make lint
 ## Deployment
 
 Deployment [is configured](uwsgi.ini) using
-[uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/) in
+[uwsgi](https://uwsgi.readthedocs.io/en/latest/) in
 [emperor mode](https://uwsgi.readthedocs.io/en/latest/Emperor.html).
 
 In this case, environment variables are set in the `uwsgi.ini` file.
