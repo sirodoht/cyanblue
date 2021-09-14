@@ -42,7 +42,9 @@ DTEND;TZID=Europe/London:{finish_timestamp}
 UID:{begin_timestamp}@scihublondon.org
 DTSTAMP:{begin_timestamp}Z
 LOCATION:Newspeak House\\, 133-135 Bethnal Green Road\\, E2 7DG
+DESCRIPTION:https://scihublondon.org/meetup-1/
 URL;VALUE=URI:{event.gmaps_url}
+SEQUENCE:0
 SUMMARY:Sci-Hub London {event.title}
 LAST-MODIFIED:{begin_timestamp}Z
 CREATED:{begin_timestamp}Z
