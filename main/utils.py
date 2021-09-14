@@ -4,11 +4,10 @@ from django.conf import settings
 
 
 def get_protocol():
-    return "https:"
-    #if settings.DEBUG:
-    #    return "http:"
-    #else:
-    #    return "https:"
+    if settings.DEBUG:
+        return "http:"
+    else:
+        return "https:"
 
 
 def get_ics(event):

@@ -35,8 +35,8 @@ ALLOWED_HOSTS = [
 ADMINS = [("Eve", "hiya@scihublondon.org")]
 
 CANONICAL_HOST = "scihublondon.org"
-#if DEBUG:
-#    CANONICAL_HOST = "localhost:8000"
+if DEBUG:
+    CANONICAL_HOST = "localhost:8000"
 
 
 # Application definition
@@ -152,3 +152,4 @@ DEFAULT_FROM_EMAIL = "Sci-Hub London <hiya@scihublondon.org>"
 EMAIL_FROM_HOST = "scihublondon.org"
 SERVER_EMAIL = "WALL·E <server@scihublondon.org>"
 EMAIL_SUBJECT_PREFIX = "[cyanblue] "
+EMAIL_CAMPAIGN_PREVIEW = "zf@sirodoht.com"
