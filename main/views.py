@@ -92,15 +92,6 @@ class DashboardAnnounce(LoginRequiredMixin, FormView):
         form = self.get_form(form_class)
         if form.is_valid():
 
-            # handle dry run case
-            if form.cleaned_data.get("dryrun"):
-                mail_admins(
-                    form.cleaned_data.get("subject"),
-                    form.cleaned_data.get("body"),
-                )
-                messages.success(request, "Dry run executed")
-                return self.form_valid(form)
-
             # list of messages to sent out
             message_list = []
             record_ids = []
@@ -110,8 +101,12 @@ class DashboardAnnounce(LoginRequiredMixin, FormView):
 
             # get all subscribers
             subscribers = models.Subscription.objects.all()
-            for s in subscribers:
 
+            # but if dry run, then only sent to admin id=1
+            if form.cleaned_data.get("dryrun"):
+                subscribers = [models.Subscription.objects.get(id=22)]
+
+            for s in subscribers:
                 unsubscribe_url = utils.get_protocol() + s.get_unsubscribe_url()
                 body_footer = "\n\n"
                 body_footer += "---\n"
