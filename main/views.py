@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import mail
 from django.core.mail import mail_admins
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils import timezone
@@ -57,6 +57,8 @@ def index(request):
 
 
 def event(request, event_slug):
+    if not models.Event.objects.filter(slug=event_slug).exists():
+        raise Http404()
     return render(
         request,
         "main/event.html",
@@ -83,7 +85,7 @@ class DashboardAnnounce(LoginRequiredMixin, FormView):
         context = super().get_context_data(**kwargs)
         context["subscriptions_count"] = models.Subscription.objects.all().count()
         context["subscriptions_list"] = models.Subscription.objects.all().order_by(
-            "created_at"
+            "created_at",
         )
         return context
 
@@ -102,9 +104,20 @@ class DashboardAnnounce(LoginRequiredMixin, FormView):
             # get all subscribers
             subscribers = models.Subscription.objects.all()
 
-            # but if dry run, then only sent to admin id=1
+            # but if dry run, then only sent to campaign preview email
             if form.cleaned_data.get("dryrun"):
-                subscribers = models.Subscription.objects.all().exclude(id=22)
+                if not models.Subscription.objects.filter(
+                    email=settings.EMAIL_CAMPAIGN_PREVIEW
+                ).exists():
+                    form.add_error(
+                        "dryrun", "Dry run email for campaign preview does not exist."
+                    )
+                    return self.form_invalid(form)
+                subscribers = [
+                    models.Subscription.objects.get(
+                        email=settings.EMAIL_CAMPAIGN_PREVIEW
+                    )
+                ]
 
             for s in subscribers:
                 unsubscribe_url = utils.get_protocol() + s.get_unsubscribe_url()
