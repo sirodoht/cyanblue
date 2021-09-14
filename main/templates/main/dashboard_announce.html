@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1 class="landing-title">
+    <a href="{% url 'index' %}" class="landing-title-muted">
+        Sci-Hub Meetup London
+    </a>
+    <br>Dashboard — Announce Meetup
+</h1>
+
+<main>
+    <section>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Send {{ subscriptions_count }} emails now!">
+        </form>
+
+        <p>
+            List of receipients:
+        </p>
+        <ul>
+            {% for s in subscriptions_list %}
+            <li>{{ s.email }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock %}}
