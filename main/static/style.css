@@ -272,6 +272,13 @@ aside {
     padding: 64px 0;
 }
 
+blockquote {
+    border-left: 8px solid var(--muted-color);
+    padding-left: 8px;
+    margin-left: 0;
+    color: var(--muted-color);
+}
+
 hr {
     border: 0;
     height: 0;
@@ -298,8 +305,8 @@ hr {
     text-align: center;
     margin-bottom: 128px;
     font-size: 32px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid var(--muted-color);
+    border-bottom: 1px solid var(--muted-color);
     padding: 12px 0;
 }
 
