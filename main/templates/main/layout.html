@@ -40,5 +40,10 @@
         {% block content %}
         {% endblock %}
 
+        <footer>
+            / <a href="{% url 'index' %}">Home</a>
+            / <a href="{% url 'coc' %}">Code of Conduct</a>
+            / <a href="{% url 'subscribe' %}">Subscribe</a>
+        </footer>
     </body>
 </html>

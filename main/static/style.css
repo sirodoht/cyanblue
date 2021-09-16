@@ -272,6 +272,25 @@ aside {
     padding: 64px 0;
 }
 
+footer {
+    max-width: 540px;
+    margin: 64px auto 32px;
+}
+@media (max-width: 570px) {
+    footer {
+        padding: 0 8px;
+    }
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--muted-color);
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 blockquote {
     border-left: 8px solid var(--muted-color);
     padding-left: 8px;
