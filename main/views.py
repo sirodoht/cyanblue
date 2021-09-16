@@ -56,6 +56,10 @@ def index(request):
         return render(request, "main/index.html")
 
 
+def subscribe(request):
+    return render(request, "main/subscribe.html")
+
+
 def event(request, event_slug):
     if not models.Event.objects.filter(slug=event_slug).exists():
         raise Http404()

@@ -4,6 +4,7 @@ from main import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("subscribe/", views.subscribe, name="subscribe"),
     path("<slug:event_slug>/", views.event, name="event"),
     path("<slug:event_slug>/ics/", views.event_ics, name="event_ics"),
     path(

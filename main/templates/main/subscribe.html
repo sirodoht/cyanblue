@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1 class="landing-title">
+    <a href="{% url 'index' %}" class="landing-title-muted">
+        Sci-Hub Meetup London
+    </a>
+    <br>Subscribe
+</h1>
+
+<main>
+    {% include "partials/subscribe.html" %}
+</main>
+{% endblock %}
