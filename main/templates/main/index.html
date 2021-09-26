@@ -7,11 +7,25 @@
 
 <main>
     <article class="pinned">
+        <p>Next meetup: mid-December 2021</p>
+        <p><a class="pinned-subscribe" href="{% url 'subscribe' %}">Get notified »</a></p>
+        <!--
         <a href="meetup-1">Meetup #1 — Sep 23, 2021</a>
         <br>@ <a href="https://www.nwspk.com/">Newspeak House</a>
+        -->
     </article>
 
-    <article class="intro">
+    <article class="past">
+        <h2>Past meetups</h2>
+        {% for event in event_list %}
+        <p>
+            <a href="{% url 'event' event.slug %}">Meetup #1 — Sep 23, 2021</a>
+            @ <a href="https://www.nwspk.com/">Newspeak House</a>
+        </p>
+        {% endfor %}
+    </article>
+
+    <article class="lead">
         <p>Hey!—</p>
         <p>
             Are you interested in Sci-Hub? We’re interested in
@@ -41,6 +55,5 @@
     {% include "partials/lenses.html" %}
 
     {% include "partials/subscribe.html" %}
-
 </main>
 {% endblock %}

@@ -14,7 +14,13 @@ from main import forms, models, utils
 
 def index(request):
     if request.method == "GET":
-        return render(request, "main/index.html")
+        return render(
+            request,
+            "main/index.html",
+            {
+                "event_list": models.Event.objects.all().order_by("-scheduled_at"),
+            },
+        )
     elif request.method == "POST":
         form = forms.SubscriptionForm(request.POST)
 
