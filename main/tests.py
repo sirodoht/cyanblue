@@ -104,7 +104,7 @@ class EventTestCase(TestCase):
             title="Sci-Hub Meetup",
             scheduled_at=timezone.now(),
             location="Newspeak House",
-            gmaps_url="https://g.co/",
+            location_url="https://g.co/",
         )
 
     def test_event_get_404(self):
@@ -127,7 +127,7 @@ class AnnounceTestCase(TestCase):
             title="Sci-Hub Meetup",
             scheduled_at=timezone.now(),
             location="Newspeak House",
-            gmaps_url="https://g.co/",
+            location_url="https://g.co/",
         )
         self.subscription = models.Subscription.objects.create(
             email="tester@example.com"

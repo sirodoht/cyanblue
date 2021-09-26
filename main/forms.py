@@ -9,7 +9,7 @@ class SubscriptionForm(forms.ModelForm):
         fields = ["email"]
 
 
-class AnnounceForm(forms.Form):
+class BroadcastForm(forms.Form):
     subject = forms.CharField()
     body = forms.CharField(widget=forms.Textarea)
     dryrun = forms.BooleanField(

@@ -80,10 +80,10 @@ def event_ics(request, event_slug):
     return response
 
 
-class DashboardAnnounce(LoginRequiredMixin, FormView):
-    form_class = forms.AnnounceForm
-    template_name = "main/dashboard_announce.html"
-    success_url = reverse_lazy("dashboard_announce")
+class DashboardBroadcast(LoginRequiredMixin, FormView):
+    form_class = forms.BroadcastForm
+    template_name = "main/dashboard_broadcast.html"
+    success_url = reverse_lazy("dashboard_broadcast")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

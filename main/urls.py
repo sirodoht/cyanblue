@@ -8,9 +8,9 @@ urlpatterns = [
     path("<slug:event_slug>/", views.event, name="event"),
     path("<slug:event_slug>/ics/", views.event_ics, name="event_ics"),
     path(
-        "dashboard/announce/",
-        views.DashboardAnnounce.as_view(),
-        name="dashboard_announce",
+        "dashboard/broadcast/",
+        views.DashboardBroadcast.as_view(),
+        name="dashboard_broadcast",
     ),
     path(
         "unsubscribe/<uuid:key>/",

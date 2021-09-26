@@ -8,7 +8,7 @@
     <a href="{% url 'index' %}" class="title-muted">
         Sci-Hub Meetup London
     </a>
-    <br>Dashboard — Announce Meetup
+    <br>Dashboard — Broadcast
 </h1>
 
 <main>
@@ -18,6 +18,13 @@
             {% csrf_token %}
             <input type="submit" value="Send {{ subscriptions_count }} emails now!">
         </form>
+
+        <p>
+            Preview email:
+        </p>
+        <ul>
+            <li>{{ dryrun_email }}</li>
+        </ul>
 
         <p>
             List of receipients:
