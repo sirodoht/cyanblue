@@ -15,92 +15,17 @@
         Sci-Hub Meetup London
     </a>
     <br>{{ event.title }} —
-    <a href="{% url 'event_ics' event.slug %} " class="event-ics">
-        <time datetime="2021-09-23T18:00:00+0100">
+    <a href="{% url 'event_ics' event.slug %}" class="event-ics">
+        <time datetime="{{ event.scheduled_at|date:'c' }}">
             {{ event.scheduled_at|date }} at {{ event.scheduled_at|time }}
         </time>
     </a>
-    <br>@ <a href="https://www.nwspk.com/">{{ event.location }}</a>
+    <br>@ <a href="{{ event.location_url }}">{{ event.location }}</a>
 </h1>
 
 <main>
-    <article class="intro">
-        <p>Hey!—</p>
-        <p>
-            Are you interested in Sci-Hub? We’re interested in
-            <span style="white-space: nowrap;">Sci-Hub</span>!
-        </p>
-        <p>
-            We’re a group of people (not affiliated with Sci-Hub) that
-            wants to talk about and exchange ideas and stories about the
-            unique library.
-        </p>
-
-        <p>
-            Join us in our inaugural meetup at Newspeak House. Let’s meetup and
-            talk about the phenomenon of
-            <span style="white-space: nowrap;">Sci-Hub</span>.
-        </p>
-
-        <p>
-            Context for the current affairs: Sci-Hub has been under attack since
-            its inception, but since February 2021, it has stopped getting updated.
-            No new articles are added. This is due an ongoing legal hearing in
-            India, which keeps—constantly—being
-            <a href="https://old.reddit.com/r/scihub/comments/lofj0r/announcement_scihub_has_been_paused_no_new/">postponed</a>.
-        </p>
-        <p>
-            <em>Update 5/11/2021:</em>
-            <a href="https://twitter.com/ringo_ring/status/1434356217208623106">Sci-Hub adds 2m new articles</a>.
-        </p>
-
-        <p>
-            Sci-Hub has a large impact to researchers from all disciplines, students,
-            activists, copyright pirates, politicians, law people, and eventually the whole
-            of society. This is the reason that we expect people from various different
-            fields of interest to join.
-        </p>
-
-        <p>
-            This is also the reason that even if one feels they are from a completely
-            irrelevant area and are not sure if they should attend, the answer is
-            definitely yes! I’m pretty confident everyone can fit it and talk about
-            Sci-Hub.
-        </p>
-
-        <p>
-            In terms of agenda, there will be a short presentation about the latest
-            developments around Sci-Hub and then various discussions around
-            Sci-Hub, ethical concerns, social impact, et al.
-        </p>
-
-        <p>
-            Hope to see you there :)
-        </p>
-        <p>
-            Thursday, Sep 23, 2021 at 6pm.
-        </p>
-        <p>
-            <a href="{% url 'event_ics' event.slug %}">Calendar event link</a>.
-        </p>
-
-        <p>
-            <strong>Newspeak House</strong> is at
-            <a href="https://goo.gl/maps/7PGNugeR6dPika6W8">133-135 Bethnal Green Road, E2 7DG</a>.
-        </p>
-        <p>
-            Contact: <a href="https://twitter.com/sirodoht">@sirodoht</a> or
-            <a href="mailto:zf+scihub@sirodoht.com">zf+scihub@sirodoht.com</a>.
-        </p>
-        <p>
-            Here is our <a href="{% url 'coc' %}">Code of Conduct</a>.
-        </p>
-
-        <p>
-            PS. We do not support, endorse, or contribute in any
-            way to illegal activities. Our interest to Sci-Hub is only
-            from a societal and research point of view.
-        </p>
+    <article class="lead">
+        {{ event.body|safe }}
     </article>
 
     {% include "partials/subscribe.html" %}
