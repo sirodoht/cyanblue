@@ -36,9 +36,10 @@ class EmailRecord(models.Model):
 class Event(models.Model):
     slug = models.CharField(max_length=50)
     title = models.CharField(max_length=300)
-    location = models.CharField(max_length=300)
+    body = models.TextField(default=None, null=True)
     scheduled_at = models.DateTimeField()
-    gmaps_url = models.URLField()
+    location = models.CharField(max_length=300)
+    location_url = models.URLField()
 
     def __str__(self):
         return self.slug
