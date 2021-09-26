@@ -87,6 +87,7 @@ class DashboardBroadcast(LoginRequiredMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["dryrun_email"] = settings.EMAIL_CAMPAIGN_PREVIEW
         context["subscriptions_count"] = models.Subscription.objects.all().count()
         context["subscriptions_list"] = models.Subscription.objects.all().order_by(
             "created_at",
@@ -101,9 +102,18 @@ class DashboardBroadcast(LoginRequiredMixin, FormView):
             # list of messages to sent out
             message_list = []
             record_ids = []
+            attachments = []
 
-            # TODO: get event from form, stub for now
-            event = models.Event.objects.get()
+            if form.cleaned_data.get("include_ics"):
+                event = models.Event.objects.all().order_by("-scheduled_at")[0]
+                ics_content = utils.get_ics(event)
+                attachments.append(
+                    (
+                        "scihub-london-event.ics",
+                        ics_content,
+                        "application/octet-stream",
+                    ),
+                )
 
             # get all subscribers
             subscribers = models.Subscription.objects.all()
@@ -141,7 +151,6 @@ class DashboardBroadcast(LoginRequiredMixin, FormView):
                 record_ids.append(email_record.id)
 
                 # create email message
-                ics_content = utils.get_ics(event)
                 email = mail.EmailMessage(
                     subject=form.cleaned_data.get("subject"),
                     body=form.cleaned_data.get("body") + body_footer,
@@ -153,13 +162,7 @@ class DashboardBroadcast(LoginRequiredMixin, FormView):
                         "List-Unsubscribe": unsubscribe_url,
                         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
                     },
-                    attachments=[
-                        (
-                            "scihub-london-event.ics",
-                            ics_content,
-                            "application/octet-stream",
-                        )
-                    ],
+                    attachments=attachments,
                 )
                 message_list.append(email)
 
