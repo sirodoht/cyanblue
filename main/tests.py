@@ -137,10 +137,10 @@ class AnnounceTestCase(TestCase):
 
     def test_announce_get(self):
         response = self.client.get(
-            reverse("dashboard_announce"),
+            reverse("dashboard_broadcast"),
         )
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Announce Meetup")
+        self.assertContains(response, "Broadcast")
 
     def test_announce_invalid_dryrun_post(self):
         with patch.object(
@@ -154,7 +154,7 @@ class AnnounceTestCase(TestCase):
             ),
         ):
             response = self.client.post(
-                reverse("dashboard_announce"),
+                reverse("dashboard_broadcast"),
                 {
                     "subject": "Meetup Announcement",
                     "body": "Hey! We're having a meetup :D",
@@ -184,7 +184,7 @@ class AnnounceTestCase(TestCase):
             ),
         ):
             response = self.client.post(
-                reverse("dashboard_announce"),
+                reverse("dashboard_broadcast"),
                 {
                     "subject": "Meetup Announcement",
                     "body": "Hey! We're having a meetup :D",
