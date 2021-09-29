@@ -16,6 +16,10 @@ class StaticTestCase(TestCase):
         response = self.client.get(reverse("index"))
         self.assertEqual(response.status_code, 200)
 
+    def test_index_head(self):
+        response = self.client.get(reverse("index"))
+        self.assertEqual(response.status_code, 200)
+
     def test_coc_get(self):
         response = self.client.get(reverse("coc"))
         self.assertEqual(response.status_code, 200)

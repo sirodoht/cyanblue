@@ -13,7 +13,7 @@ from main import forms, models, utils
 
 
 def index(request):
-    if request.method == "GET":
+    if request.method == "GET" or request.method == "HEAD":
         return render(
             request,
             "main/index.html",
