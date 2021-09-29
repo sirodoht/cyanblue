@@ -328,6 +328,11 @@ hr {
     margin-bottom: 32px;
     padding: 24px 0 16px;
 }
+@media (max-width: 570px) {
+    .pinned {
+        font-size: 28px;
+    }
+}
 
 .pinned p {
     margin: 0 auto;
@@ -350,6 +355,10 @@ hr {
 
 .past h2 {
     font-size: 24px;
+}
+
+.past-location {
+    white-space: nowrap;
 }
 
 .lead {

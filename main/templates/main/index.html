@@ -7,7 +7,11 @@
 
 <main>
     <article class="pinned">
-        <p>Next meetup: mid-December 2021</p>
+        <p>
+            <span>Next meetup</span>
+            <br>
+            <span style="color: #999;">mid-December 2021</span>
+        </p>
         <p><a class="pinned-subscribe" href="{% url 'subscribe' %}">Get notified »</a></p>
         <!--
         <a href="meetup-1">Meetup #1 — Sep 23, 2021</a>
@@ -20,7 +24,9 @@
         {% for event in event_list %}
         <p>
             <a href="{% url 'event' event.slug %}">Meetup #1 — Sep 23, 2021</a>
-            @ <a href="https://www.nwspk.com/">Newspeak House</a>
+            <span class="past-location">
+                @ <a href="https://www.nwspk.com/">Newspeak House</a>
+            </span>
         </p>
         {% endfor %}
     </article>
