@@ -15,10 +15,12 @@
         </p>
         <p><a class="pinned-subscribe" href="{% url 'subscribe' %}">Get notified »</a></p>
         -->
+        {% if latest_event %}
         <a href="{% url 'event' latest_event.slug %}">
            {{ latest_event.title }} — {{ latest_event.scheduled_at|date }}
         </a>
         <br>@ <a href="https://www.nwspk.com/">{{ latest_event.location }}</a>
+        {% endif %}
     </article>
 
     <article class="past">
