@@ -18,9 +18,15 @@ def index(request):
             request,
             "main/index.html",
             {
-                "event_list": models.Event.objects.all().order_by("-scheduled_at"),
+                "latest_event": models.Event.objects.all()
+                .order_by("-scheduled_at")
+                .first(),
+                "event_list": models.Event.objects.filter(
+                    scheduled_at__lt=timezone.now()
+                ).order_by("-scheduled_at"),
             },
         )
+
     elif request.method == "POST":
         form = forms.SubscriptionForm(request.POST)
 
