@@ -37,10 +37,7 @@ def index(request):
             ]:
                 # if case of already subscribed
                 messages.info(request, "Email already subscribed :)")
-                return render(
-                    request,
-                    "main/index.html",
-                )
+                return redirect("index")
 
             else:
                 # all other cases
@@ -52,6 +49,12 @@ def index(request):
                     request,
                     "main/index.html",
                     {
+                        "latest_event": models.Event.objects.all()
+                        .order_by("-scheduled_at")
+                        .first(),
+                        "event_list": models.Event.objects.filter(
+                            scheduled_at__lt=timezone.now()
+                        ).order_by("-scheduled_at"),
                         "form": form,
                     },
                 )
@@ -64,8 +67,8 @@ def index(request):
             f"Someone new has subscribed to Sci-Hub London. Hooray!\n\nIt's {submitter_email}\n",
         )
 
-        messages.success(request, "Thanks! Email saved—we’ll be in touch soon!")
-        return render(request, "main/index.html")
+        messages.success(request, "Thanks! Email saved—we’ll be in touch!")
+        return redirect("index")
 
 
 def subscribe(request):
@@ -88,7 +91,7 @@ def event_ics(request, event_slug):
     event = models.Event.objects.get(slug=event_slug)
     ics_content = utils.get_ics(event)
     response = HttpResponse(ics_content, content_type="application/octet-stream")
-    response["Content-Disposition"] = "attachment; filename=scihub-london-event.ics"
+    response["Content-Disposition"] = f"attachment; filename=scihub-london-{event.slug}.ics"
     return response
 
 
@@ -117,11 +120,11 @@ class DashboardBroadcast(LoginRequiredMixin, FormView):
             attachments = []
 
             if form.cleaned_data.get("include_ics"):
-                event = models.Event.objects.all().order_by("-scheduled_at")[0]
+                event = models.Event.objects.all().order_by("-scheduled_at").first()
                 ics_content = utils.get_ics(event)
                 attachments.append(
                     (
-                        "scihub-london-event.ics",
+                        f"scihub-london-{event.slug}.ics",
                         ics_content,
                         "application/octet-stream",
                     ),
