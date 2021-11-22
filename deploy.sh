@@ -6,6 +6,9 @@ set -x
 # push origin
 git push origin master
 
+# push github
+git push github master
+
 # make sure tests pass
 source venv/bin/activate
 python manage.py test
