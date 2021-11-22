@@ -91,7 +91,9 @@ def event_ics(request, event_slug):
     event = models.Event.objects.get(slug=event_slug)
     ics_content = utils.get_ics(event)
     response = HttpResponse(ics_content, content_type="application/octet-stream")
-    response["Content-Disposition"] = f"attachment; filename=scihub-london-{event.slug}.ics"
+    response[
+        "Content-Disposition"
+    ] = f"attachment; filename=scihub-london-{event.slug}.ics"
     return response
 
 

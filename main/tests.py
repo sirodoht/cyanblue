@@ -39,11 +39,12 @@ class SubscriptionTestCase(TestCase):
             {
                 "email": "tester@example.com",
             },
+            follow=True,
         )
 
         # verify request
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Thanks! Email saved—we’ll be in touch soon!")
+        self.assertContains(response, "Thanks! Email saved—we’ll be in touch!")
 
         # verify model
         self.assertEqual(models.Subscription.objects.all().count(), 1)
