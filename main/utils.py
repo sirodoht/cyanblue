@@ -12,7 +12,7 @@ def get_protocol():
 
 def get_ics(event):
     begin_timestamp = datetime.strftime(event.scheduled_at, "%Y%m%dT%H%M%S")
-    finish_date = event.scheduled_at + timedelta(hours=4)
+    finish_date = event.scheduled_at + timedelta(hours=2)
     finish_timestamp = datetime.strftime(finish_date, "%Y%m%dT%H%M%S")
 
     return f"""BEGIN:VCALENDAR
@@ -42,7 +42,7 @@ DTEND;TZID=Europe/London:{finish_timestamp}
 UID:{begin_timestamp}@scihublondon.org
 DTSTAMP:{begin_timestamp}Z
 LOCATION:Newspeak House\\, 133-135 Bethnal Green Road\\, E2 7DG
-DESCRIPTION:https://scihublondon.org/meetup-1/
+DESCRIPTION:https://scihublondon.org/{event.slug}/
 URL;VALUE=URI:{event.location_url}
 SEQUENCE:0
 SUMMARY:Sci-Hub London {event.title}
