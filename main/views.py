@@ -24,7 +24,7 @@ def index(request):
         # it's only next if it's only one published in the future
         next_event = models.Event.objects.all().order_by("-scheduled_at").first()
         # show it as pinned if it's in the future
-        if next_event.scheduled_at >= timezone.now():
+        if next_event and next_event.scheduled_at >= timezone.now():
             context["next_event"] = next_event
         else:
             context["show_announcement"] = True
