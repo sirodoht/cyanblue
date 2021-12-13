@@ -10,9 +10,7 @@ git push origin master
 git push github master
 
 # make sure tests pass
-source venv/bin/activate
 python manage.py test
-deactivate
 
 # pull and reload on server
 ssh root@95.217.223.96 'cd /opt/apps/cyanblue \
