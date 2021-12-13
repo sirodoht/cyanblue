@@ -14,18 +14,22 @@ from main import forms, models, utils
 
 def index(request):
     if request.method == "GET" or request.method == "HEAD":
-        return render(
-            request,
-            "main/index.html",
-            {
-                "latest_event": models.Event.objects.all()
-                .order_by("-scheduled_at")
-                .first(),
-                "event_list": models.Event.objects.filter(
-                    scheduled_at__lt=timezone.now()
-                ).order_by("-scheduled_at"),
-            },
-        )
+        context = {
+            "event_list": models.Event.objects.filter(
+                scheduled_at__lt=timezone.now()
+            ).order_by("-scheduled_at"),
+            "show_announcement": False,
+        }
+
+        # it's only next if it's only one published in the future
+        next_event = models.Event.objects.all().order_by("-scheduled_at").first()
+        # show it as pinned if it's in the future
+        if next_event.scheduled_at >= timezone.now():
+            context["next_event"] = next_event
+        else:
+            context["show_announcement"] = True
+
+        return render(request, "main/index.html", context)
 
     elif request.method == "POST":
         form = forms.SubscriptionForm(request.POST)

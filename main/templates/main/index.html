@@ -6,22 +6,25 @@
 <h1 class="title">Sci-Hub Meetup London</h1>
 
 <main>
+    {% if show_announcement %}
     <article class="pinned">
-        <!--
         <p>
             <span>Next meetup</span>
             <br>
-            <span style="color: #999;">mid-December 2021</span>
+            <span style="color: #999;">Feb – Mar 2022</span>
         </p>
         <p><a class="pinned-subscribe" href="{% url 'subscribe' %}">Get notified »</a></p>
-        -->
-        {% if latest_event %}
-        <a href="{% url 'event' latest_event.slug %}">
-           {{ latest_event.title }} — {{ latest_event.scheduled_at|date }}
-        </a>
-        <br>@ <a href="https://www.nwspk.com/">{{ latest_event.location }}</a>
-        {% endif %}
     </article>
+    {% endif %}
+
+    {% if next_event %}
+    <article class="pinned">
+        <a href="{% url 'event' next_event.slug %}">
+           {{ next_event.title }} — {{ next_event.scheduled_at|date }}
+        </a>
+        <br>@ <a href="https://www.nwspk.com/">{{ next_event.location }}</a>
+    </article>
+    {% endif %}
 
     <article class="past">
         <h2>Past meetups</h2>
